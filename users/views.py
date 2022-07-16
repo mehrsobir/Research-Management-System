@@ -17,7 +17,7 @@ def user_register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('/login')
+            return redirect('/home')
         else:
             context['registration_form'] = form
     else:

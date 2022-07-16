@@ -2,62 +2,20 @@
 {% load crispy_forms_tags %} {% block content %}<br>
 <form method="post">
   {% csrf_token %}
-  <tr>
-    <th><label for="id_first_name">Ном:</label></th>
-    <td>
-<br>
-      <input type="text" name="first_name" maxlength="150" id="id_first_name">
+  {% for f in registration_form %}
+    <p>
+      {{ f.label_tag }}
+      {{ f }}
+      {% if f.help_text %}
+        <small> {{f.help_text}} </small>
+      {% endif %}
+      {% for error in f.errors %}
+        <p> {{ error }}</p>
+      {% endfor %}
 
-
-    </td>
-  </tr>
-<br>
-  <tr>
-    <th><label for="id_last_name">Насаб:</label></th>
-    <td>
-<br>
-      <input type="text" name="last_name" maxlength="150" id="id_last_name">
-
-
-    </td>
-  </tr>
-<br>
-  <tr>
-    <th><label for="id_email">Email:</label></th>
-    <td>
-<br>
-      <input type="email" name="email" required id="id_email">
-
-
-    </td>
-  </tr>
-<br>
-  <tr>
-    <th><label for="id_password1">Парол:</label></th>
-    <td>
-<br>
-      <input type="password" name="password1" autocomplete="new-password" required id="id_password1">
-
-        <br>
-        <span class="helptext"><ul><li>Пароли шумо набояд ба маълумоти шахсиатон монанд бонашд.</li>
-          <li>Парроли шумо бояд ҳадди ақал 8 аломат дошта бошад.</li>
-          <li>пароли шумо набояд куллан рақамӣ бошад.</li></ul></span>
-    </td>
-  </tr>
-
-  <tr>
-    <th><label for="id_password2">Тасдиқи парол:</label></th>
-    <td>
-<br>
-      <input type="password" name="password2" autocomplete="new-password" required id="id_password2">
-
-        <br>
-        <span class="helptext">Ҳамон паролро барои муқоиса ворид созед.</span>
-<br>
-    </td>
-  </tr>
-<br>
-  <p>Сабти ном кардаед? <a href="/users/login">Ворид шавед</a>!</p>
+    </p>
+  {% endfor %}
+  <p>Have an account? Login <a href="/login">Here</a>!</p>
   <button type="submit" class="btn btn-success">Register</button>
 </form>
 {% endblock %}

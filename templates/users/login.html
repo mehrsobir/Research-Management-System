@@ -1,11 +1,11 @@
 {% extends 'main/base.html' %} {% block title %}Login{% endblock %} 
 {% load crispy_forms_tags %} {% block content %}
 <br>
-<form action = 'login' method="post">
+<form method="post">
   {% csrf_token %}
   <input type = 'text' name="email" placeholder="Email"><br>
   <input type = 'password' name="password" placeholder="Парол"><br>
-  <p>Сабти ном накардед? <a href="/users/register">Ин ҷо кунед</a>!</p>
+  <p>Сабти ном накардед? <a href="/register">Ин ҷо кунед</a>!</p>
   <button type="submit" class="btn btn-success">Воридшавӣ</button>
 </form>
 {% endblock %}

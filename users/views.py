@@ -10,15 +10,17 @@ from main.forms import RegisterForm
 # from django.contrib.auth import get_user_model
 # User = get_user_model()
 
-def give_perm(request):
-    ct = ContentType.objects.get_for_model(model=NewUser)
-    perm = Permission.objects.filter(content_type = ct)
+def add_user_group(request):
+    # ct = ContentType.objects.get_for_model(model=NewUser)
+    # perm = Permission.objects.filter(content_type = ct)
+    # grup.user_set.remove(user)
 
-    user = NewUser.objects.get(email='m@m.tj')
-    grup = Group.objects.get(name = 'management')
-    grup.user_set.add(user)
-    print(grup)
-    return HttpResponse('df')
+    user = NewUser.objects.get(id=1)
+    group_name = request.GET.get('group','')
+    group = Group.objects.get(name=group_name)
+    group.user_set.add(user)
+    print(user.groups.all())
+    return HttpResponse('sdf')
 
 
 def user_register(request):

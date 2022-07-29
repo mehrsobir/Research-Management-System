@@ -1,7 +1,11 @@
 {% extends 'main/base.html' %}
 {% block title %}АСОСӢ{% endblock %}
 {% block content %}
-
+{% for i in messages%}
+<div class="card mt-2">
+    <p> {{ i }}</p>
+  {% endfor%}
+</div>
 <!--{% for post in posts %}-->
 <div class="card mt-2">
     <div class="card-header"><strong>@sefs</strong></div>

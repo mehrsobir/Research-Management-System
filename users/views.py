@@ -10,7 +10,7 @@ from main.forms import RegisterForm
 # from django.contrib.auth import get_user_model
 # User = get_user_model()
 
-def add_user_group(request):
+def group_add_user(request):
     # ct = ContentType.objects.get_for_model(model=NewUser)
     # perm = Permission.objects.filter(content_type = ct)
     # grup.user_set.remove(user)
@@ -19,15 +19,22 @@ def add_user_group(request):
     group_name = request.GET.get('group','')
     group = Group.objects.get(name=group_name)
     group.user_set.add(user)
-    print(user.groups.all())
-    return HttpResponse('sdf')
+    messages.info(request, f'{user.first_name} added to group {group}!!')
+    return redirect('/')
+
+def group_remove_user(request):
+    user = NewUser.objects.get(id=1)
+    group_name = request.GET.get('group','')
+    group = Group.objects.get(name=group_name)
+    group.user_set.remove(user)
+    messages.info(request, f'{user.first_name} removed from group {group}!!')
+    return redirect('/')
 
 
 def user_register(request):
     context = {}
     if request.method == 'POST':
         form = RegisterForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -53,10 +60,8 @@ def user_login(request):
             messages.info(request, 'Логин ё парол хато аст. Лутфан, аз нав ворид шавед!!')
             return redirect('/login')
 
-    return render(request, 'users/login.html') #HttpResponse('<h1>Саҳифаи login</h1>') #
+    return render(request, 'users/login.html')
 
 def user_logout(request):
-    # if request.method == 'POST':
     logout(request)
     return redirect('login')
-    # return render(request, 'users/login.html')

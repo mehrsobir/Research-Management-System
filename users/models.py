@@ -47,3 +47,6 @@ class Account(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+class Profile(models.Model):
+    user_id = models.ForeignKey(Account,on_delete=models.CASCADE)

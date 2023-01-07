@@ -3,7 +3,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import Group, Permission
-from .models import NewUser
+from .models import Account
 from django.contrib.contenttypes.models import ContentType
 from main.forms import RegisterForm
 
@@ -15,7 +15,7 @@ def group_add_user(request):
     # perm = Permission.objects.filter(content_type = ct)
     # grup.user_set.remove(user)
 
-    user = NewUser.objects.get(id=1)
+    user = Account.objects.get(id=1)
     group_name = request.GET.get('group','')
     group = Group.objects.get(name=group_name)
     group.user_set.add(user)
@@ -23,7 +23,7 @@ def group_add_user(request):
     return redirect('/')
 
 def group_remove_user(request):
-    user = NewUser.objects.get(id=1)
+    user = Account.objects.get(id=1)
     group_name = request.GET.get('group','')
     group = Group.objects.get(name=group_name)
     group.user_set.remove(user)

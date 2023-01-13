@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Account, Profile
+from .models import Account, Profile, Nationality, Education
 from django.contrib.auth.admin import UserAdmin
 from django.forms import TextInput, Textarea
 
@@ -28,4 +28,6 @@ class UserAdminConfig(UserAdmin):
 
 
 admin.site.register(Account, UserAdminConfig)
+admin.site.register(Nationality)
+admin.site.register(Education)
 admin.site.register(Profile)

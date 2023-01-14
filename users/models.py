@@ -1,4 +1,5 @@
 from django.db import models
+from constant.models import Nationality, Education
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
@@ -48,22 +49,15 @@ class Account(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
-class Nationality(models.Model):
-    name = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.name
-
-class Education(models.Model):
-    name = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
 
 class Profile(models.Model):
+    GENDER_CHOICES = (
+        ('М', 'Мард'),
+        ('З', 'Зан'),
+    )
     user = models.OneToOneField(Account,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='static/images/user_images', verbose_name='Расм', null=True, blank=True)
-    gender = models.BooleanField(null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
     nationality = models.OneToOneField(Nationality, on_delete=models.CASCADE, null=True, blank=True)
     education = models.OneToOneField(Education, on_delete=models.CASCADE, null=True, blank=True)
     phone = models.CharField(max_length=13, null=True, blank=True)

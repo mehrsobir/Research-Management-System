@@ -28,6 +28,4 @@ class UserAdminConfig(UserAdmin):
 
 
 admin.site.register(Account, UserAdminConfig)
-admin.site.register(Nationality)
-admin.site.register(Education)
 admin.site.register(Profile)

@@ -7,5 +7,9 @@ class Institution(models.Model):
     founded_at = models.DateTimeField()
     disabled = models.BooleanField(default=False)
 
+    class Meta:
+        verbose_name = 'Муассиса'
+        verbose_name_plural = 'Муассисаҳо'
+
     def __str__(self):
         return self.name

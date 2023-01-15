@@ -44,3 +44,18 @@ class Job(models.Model):
 
     def __str__(self):
         return self.name
+
+class User_job(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    job = models.ForeignKey(Job, on_delete=models.CASCADE)
+    place = models.DecimalField(max_digits=5, decimal_places=2)
+    start_date = models.DateField()
+    end_date = models.DateField(null=True, blank=True)
+    disabled = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name = 'Вазифаи корманд'
+        verbose_name_plural = 'Вазифаҳои кормандон'
+
+    def __str__(self):
+        return self.user.first_name + '-' + self.job.name + '(' + str(self.place) + ')'

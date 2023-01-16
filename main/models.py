@@ -1,12 +1,12 @@
 from django.db import models
 from users.models import Account
 from constant.models import Category
-
+from .validators import validate_file_extension
 
 class Article(models.Model):
     name = models.CharField(max_length=255)
     annotation = models.TextField()
-    pages = models.PositiveIntegerField(max_length=3)
+    pages = models.PositiveIntegerField()
     pub_date = models.DateField(null=True, blank=True)
     pub_place = models.CharField(max_length=255, null=True, blank=True)
     pub_link = models.CharField(max_length=255, null=True, blank=True)
@@ -14,6 +14,7 @@ class Article(models.Model):
     author  = models.ForeignKey(Account, on_delete=models.CASCADE)
     created_at = models.DateField(auto_now_add=True)
     edited_at = models.DateField(auto_now=True)
+    pdf_file = models.FileField(upload_to='static/pdf/scientific', validators=[validate_file_extension], verbose_name='PDF-Файл', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Мақола'
@@ -24,7 +25,7 @@ class Article(models.Model):
 
 class Article_pub(models.Model):
     name = models.CharField(max_length=255)
-    pages = models.PositiveIntegerField(max_length=3)
+    pages = models.PositiveIntegerField()
     pub_date = models.DateField(null=True, blank=True)
     pub_place = models.CharField(max_length=255, null=True, blank=True)
     pub_link = models.CharField(max_length=255, null=True, blank=True)
@@ -32,6 +33,7 @@ class Article_pub(models.Model):
     author  = models.ForeignKey(Account, on_delete=models.CASCADE)
     created_at = models.DateField(auto_now_add=True)
     edited_at = models.DateField(auto_now=True)
+    pdf_file = models.FileField(upload_to='static/pdf/public', validators=[validate_file_extension], verbose_name='PDF-Файл', null=True, blank=True)
 
     class Meta:
         verbose_name = 'Мақолаи оммавӣ'
@@ -56,6 +58,25 @@ class TV(models.Model):
     def __str__(self):
         return self.topic
 
+class Book(models.Model):
+    name = models.CharField(max_length=255)
+    annotation = models.TextField()
+    pages = models.PositiveIntegerField()
+    pub_date = models.DateField(null=True, blank=True)
+    pub_place = models.CharField(max_length=255, null=True, blank=True)
+    pub_link = models.CharField(max_length=255, null=True, blank=True)
+    category  = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
+    author  = models.ForeignKey(Account, on_delete=models.CASCADE)
+    created_at = models.DateField(auto_now_add=True)
+    edited_at = models.DateField(auto_now=True)
+    pdf_file = models.FileField(upload_to='static/pdf/books', validators=[validate_file_extension], verbose_name='PDF-Файл', null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Китоб'
+        verbose_name_plural = 'Китобҳо'
+
+    def __str__(self):
+        return self.name
 
 class Radio(models.Model):
     topic = models.CharField(max_length=255)
@@ -89,21 +110,3 @@ class Conference(models.Model):
     def __str__(self):
         return self.topic
 
-class Book(models.Model):
-    name = models.CharField(max_length=255)
-    annotation = models.TextField()
-    pages = models.PositiveIntegerField(max_length=3)
-    pub_date = models.DateField(null=True, blank=True)
-    pub_place = models.CharField(max_length=255, null=True, blank=True)
-    pub_link = models.CharField(max_length=255, null=True, blank=True)
-    category  = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
-    author  = models.ForeignKey(Account, on_delete=models.CASCADE)
-    created_at = models.DateField(auto_now_add=True)
-    edited_at = models.DateField(auto_now=True)
-
-    class Meta:
-        verbose_name = 'Китоб'
-        verbose_name_plural = 'Китобҳо'
-
-    def __str__(self):
-        return self.name

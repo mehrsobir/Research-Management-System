@@ -24,13 +24,32 @@
             </li>
           </ul>
         </div>
-        <div>
+
+          <div>
+          <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                    data-toggle="dropdown" aria-haspopup="true" data-toggle="dropdown" aria-expanded="false">
+              Dropdown
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <button class="dropdown-item" type="button">Action</button>
+              <button class="dropdown-item" type="button">Another action</button>
+              <button class="dropdown-item" type="button">Something else here</button>
+            </div>
+          </div>
+          </div>
+
           <ul class="navbar-nav">
             {% if user.is_authenticated %}
             <span class="navbar-text">{{user.first_name}} {{user.last_name}} | </span>
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout'%}">Logout</a>
-            </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+                </li>
+              {% if perms.institution.add_department %}
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'logout'%}">Dep</a>
+                </li>
+              {% endif %}
             {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login'%}"></a>
@@ -42,5 +61,6 @@
     </nav>
     <div class="container-fluid">{% block content %} {% endblock %}</div>
     <script src="{% static '/rms/js/bootstrap.js' %}"></script>
+
   </body>
 </html>

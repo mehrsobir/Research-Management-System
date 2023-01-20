@@ -38,13 +38,6 @@ def user_register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            group_name = Group.objects.get(name='institution')
-            # user.groups.add(group_name)
-            print('fdgsd', group_name)
-            if user.is_superuser:
-                request.session['inst_role'] = True
-            if user.is_staff:
-                request.session['dep_role'] = False
             return redirect('/')
         else:
             context['registration_form'] = form
@@ -63,12 +56,10 @@ def user_login(request):
             login(request, user)
             # gr = Group.objects.get(name = 'institute')
             # user.groups.add(gr)
-            if user.groups.filter(name = 'institute').exists():
-                request.session['inst_role'] = True
-                print(request.session['inst_role'], 55550)
-            if user.groups.filter(name = 'department').exists():
-                request.session['dep_role'] = True
-                print(request.session['dep_role'], 111)
+            # if user.groups.filter(name = 'institute').exists():
+            #     request.session['inst_role'] = True
+            # if user.groups.filter(name = 'department').exists():
+            #     request.session['dep_role'] = True
             return redirect('/')
         else:
             messages.info(request, 'Логин ё парол хато аст. Лутфан, аз нав ворид шавед!!')

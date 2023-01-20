@@ -32,9 +32,10 @@
               {{user.first_name}} {{user.last_name}}
             </a>
             <ul class="dropdown-menu bg-light me-10">
-              <li class="nav-item"><a class="nav-link dropdown-item ps-3" href="{% url 'logout'%}">Profile</a></li>
-              <li class="nav-item"><a class="nav-link dropdown-item ps-3" href="{% url 'logout'%}">Dep</a></li>
-              <li class="nav-item"><a class="nav-link dropdown-item ps-3" href="{% url 'logout'%}">Logout</a></li>
+              <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-1" href="{% url 'logout'%}">Profile</a></li>
+              <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-2" href="{% url 'logout'%}">Dep</a></li>
+              <li><hr class="dropdown-divider"></hr></li>
+              <li class="nav-item"><a class="nav-link dropdown-item ps-3 " href="{% url 'logout'%}">Logout</a></li>
             </ul>
           </div>
           </div>

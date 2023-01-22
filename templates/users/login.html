@@ -12,55 +12,55 @@
     <title>Document</title>
 </head>
 <body>
-<div class="container-fluid" style="background: url({% static 'img/old-books-g390c2e304_1920.jpg' %}) center;">
+<div class="container-fluid d-flex flex-column min-vh-100" style="background: url({% static 'img/old-books-g390c2e304_1920.jpg' %}) center;">
     <nav class="row bg-light">
-        <a class="col-12 col-md-2 text-center text-md-end"><img src="{% static 'img/school.png' %}" class="col-4 w-25" alt="Logo"></a>
-        <h4 class="font-weight-bold col-12 text-center col-md-10 text-md-start">Академияи Милли Илмҳои Тоҷикистон, <br>
+        <a class="col-12 col-md-2 text-center text-md-end"><img src="{% static 'img/school.png' %}" class="col-4 w-25 mt-1" alt="Logo"></a>
+        <h4 class="font-weight-bold col-12 text-center col-md-10 text-md-start fw-bolder">Академияи Милли Илмҳои Тоҷикистон, <br>
                 Иститути омӯзиши масъалаҳои давлатҳои Осиё ва Аврупо</h4>
      </nav>
-    <div class="row">
+    <div class="row align-items-center h-100 flex-grow-1">
         <div class="col-12 col-md-5">
             <div class="row justify-content-center m-2">
-            <form action="" class="row col-12 col-md-8 bg-light" method="post">
+            <form action="" class="row col-12 col-md-8 bg-light rounded" method="post">
                 {% csrf_token %}
-                <img src="{% static 'img/icons8-login-rounded-100.png' %}" class="col-4 w-25" alt="">
-                <h1 class="col-8">Дохилшавӣ</h1>
-                <img src="{% static 'img/icons8-name-100.png' %}" class="col-2" alt="">
-                <input class="col-9 m-1" type="text" name="email" placeholder="Имейл...">
-                <img src="{% static 'img/icons8-password-window-100.png' %}" class="col-2" alt="">
-                <input class="col-9 m-1" type="password" name="password" placeholder="Рамз...">
-                <a class="col-12" href="">Ивази рамз</a>
-                 <button type="submit" class="btn btn-secondary w-100">Дохил шудан</button>
+                <img src="{% static 'img/icons8-login-rounded-100.png' %}" class="col-2 mt-2" alt="">
+                <h1 class="col-9 fs-4 mt-2">Дохилшавӣ</h1>
+                <img src="{% static 'img/icons8-name-100.png' %}" class="col-2  mt-3" alt="">
+                <input class="col-10 mt-3" type="text" name="email" placeholder="Имейл...">
+                <img src="{% static 'img/icons8-password-window-100.png' %}" class="col-2 mt-3" alt="">
+                <input class="col-10 mt-3" type="password" name="password" placeholder="Рамз...">
+                <a class="col-12 text-end mt-2" href="">Ивази рамз</a>
+                 <button type="submit" class="btn btn-secondary w-100 mb-2 mt-4">Дохил шудан</button>
             </form>
             </div>
         </div>
 
         <div class="col-12 col-md-7">
             <div class="row justify-content-center m-2">
-                <p class="col-12 col-md-7 bg-dark text-white">Lorem ipsum dolor sit amet, consectetur adipiscing elit. venenatis sem vulputate. Suspendisse porttitor ornare mattis. Aenean dolor est, molestie et gravida eget, facilisis vitae leo. Duis lacinia mauris purus, eu rutrum neque commodo et.</p>
+                <p class="col-12 col-md-7 text-white rounded p-3" style="background-color: rgba(0,0,0,.5);">Lorem ipsum dolor sit amet, consectetur adipiscing elit. venenatis sem vulputate. Suspendisse porttitor ornare mattis. Aenean dolor est, molestie et gravida eget, facilisis vitae leo. Duis lacinia mauris purus, eu rutrum neque commodo et.</p>
             </div>
         </div>
     </div>
-    <footer class="row bg-light">
+    <footer class="row bg-light mt-auto">
         <div class="col-12 col-md-3">
             <h5 class="m-2">© 2023 АМИТ</h5>
         </div>
       <div class="col-12 col-md-3">
-        <a href="#" class="d-flex text-decoration-none m-2">
-          <img src="{% static 'img/icons8-instagram-100.png' %}" class="w-25" alt="">
-          <h5 class="m-2 text-dark">Instagram</h5>
+        <a href="#" class="d-flex mt-2 text-decoration-none row">
+          <img src="{% static 'img/icons8-instagram-100.png' %}" class="col-2" alt="">
+          <h5 class="text-dark col-10">Instagram</h5>
         </a>
       </div>
          <div class="col-12 col-md-3">
-        <a href="#" class="d-flex m-2 text-decoration-none">
-          <img src="{% static 'img/icons8-Facebook-100.png' %}" class="w-25" alt="">
-          <h5 class="m-2 text-dark">Facebook</h5>
+        <a href="#" class="d-flex mt-2 text-decoration-none row">
+          <img src="{% static 'img/icons8-Facebook-100.png' %}" class="col-2" alt="">
+          <h5 class="text-dark col-9">Facebook</h5>
         </a>
         </div>
         <div class="col-12 col-md-3">
-        <a href="#" class="d-flex mt-2 text-decoration-none">
-          <img src="{% static 'img/icons8-Twitter-100.png' %}" class="w-25" alt="">
-          <h5 class="m-2 text-dark">Twitter</h5>
+        <a href="#" class="d-flex mt-2 text-decoration-none row">
+          <img src="{% static 'img/icons8-Twitter-100.png' %}" class="col-2" alt="">
+          <h5 class="text-dark col-9">Twitter</h5>
         </a>
         </div>
     </footer>

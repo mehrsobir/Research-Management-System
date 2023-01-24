@@ -14,54 +14,53 @@
     <title>{% block title %}My WebSite{% endblock %}</title>
   </head>
   <body class="d-flex flex-column min-vh-100 body_img">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div class="container-fluid">
-        <div>
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'home' %}">АМИТ | ИОМДОА</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/create-post"></a>
-            </li>
-          </ul>
+    <nav class="row bg-light">
+        <div class="row col-10">
+          <a class="col-12 col-md-2 text-center text-md-end">
+            <img src="{% static 'img/school.png' %}" class="col-4 w-25 mt-1" alt="Logo">
+          </a>
+          <div class="row col-10">
+            <h4 class="font-weight-bold col-12 text-center col-md-10 text-md-start fw-bolder">
+              Иститути омӯзиши масъалаҳои давлатҳои Осиё ва Аврупои АМИТ</h4>
+              <h5 class="font-weight-bold col-12 text-center col-md-10 text-md-start fw-bolder">
+              Равзанаи пажуҳишгар</h5>
+            </div>
         </div>
 
-          <div>
+          <div class="col-2 text-center text-md-end">
           <div class="dropdown">
             <a class="btn btn-secondary dropdown-toggle me-3" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               {{user.first_name}} {{user.last_name}}
             </a>
             <ul class="dropdown-menu bg-light me-10">
               <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-1" href="{% url 'logout'%}">Profile</a></li>
-              <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-2" href="{% url 'logout'%}">Dep</a></li>
+              <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-2" href="{% url 'logout'%}">{{user.first_name}}</a></li>
+              <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-2" href="{% url 'change_password' %}">Ивази рамз</a></li>
               <li><hr class="dropdown-divider"></hr></li>
               <li class="nav-item"><a class="nav-link dropdown-item ps-3 " href="{% url 'logout'%}">Logout</a></li>
             </ul>
           </div>
           </div>
 
-        </div>
-      </div>
     </nav>
-    <div class="container-fluid">{% block content %} {% endblock %}</div>
-    <footer class="d-flex justify-content-between align-items-center mt-auto pt-4 pb-4">
-      <h5 class="text-dark">© 2023 АМИТ ҳамаи қонунҳо маҳфузанд</h5>
-      <div class="d-flex">
-        <a href="#" class="d-flex mt-3 pb-1 text-decoration-none ms-4 me-4">
-          <img src="{% static 'img/icons8-instagram-100.png' %}" class="login_ico" alt="">
-          <h5 class="text-black ms-1 ">Instagram</h5>
-        </a>
-        <a href="#" class="d-flex mt-3 pb-1 text-decoration-none ms-4 me-4">
-          <img src="{% static 'img/icons8-Facebook-100.png' %}" class="login_ico" alt="">
-          <h5 class="text-black ms-1 ">Facebook</h5>
-        </a>
-        <a href="#" class="d-flex mt-3 pb-1 text-decoration-none ms-4 me-4">
-          <img src="{% static 'img/icons8-Twitter-100.png' %}" class="login_ico" alt="">
-          <h5 class="text-black ms-1 ">Twitter</h5>
-        </a>
-      </div>
-    </footer>
+<!--    <div class="container-fluid">{% block content %} {% endblock %}</div>-->
+<!--    <footer class="d-flex justify-content-between align-items-center mt-auto pt-4 pb-4">-->
+<!--      <h5 class="text-dark">© 2023 АМИТ ҳамаи қонунҳо маҳфузанд</h5>-->
+<!--      <div class="d-flex">-->
+<!--        <a href="#" class="d-flex mt-3 pb-1 text-decoration-none ms-4 me-4">-->
+<!--          <img src="{% static 'img/icons8-instagram-100.png' %}" class="login_ico" alt="">-->
+<!--          <h5 class="text-black ms-1 ">Instagram</h5>-->
+<!--        </a>-->
+<!--        <a href="#" class="d-flex mt-3 pb-1 text-decoration-none ms-4 me-4">-->
+<!--          <img src="{% static 'img/icons8-Facebook-100.png' %}" class="login_ico" alt="">-->
+<!--          <h5 class="text-black ms-1 ">Facebook</h5>-->
+<!--        </a>-->
+<!--        <a href="#" class="d-flex mt-3 pb-1 text-decoration-none ms-4 me-4">-->
+<!--          <img src="{% static 'img/icons8-Twitter-100.png' %}" class="login_ico" alt="">-->
+<!--          <h5 class="text-black ms-1 ">Twitter</h5>-->
+<!--        </a>-->
+<!--      </div>-->
+<!--    </footer>-->
     <script src="{% static '/rms/js/bootstrap.js' %}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>

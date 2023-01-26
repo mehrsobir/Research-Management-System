@@ -37,7 +37,8 @@
               <ul class="dropdown-menu">
                 <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-1" href="{% url 'logout'%}">Profile</a></li>
                 <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-2" href="{% url 'logout'%}">{{user.first_name}}</a></li>
-                <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-2" href="{% url 'change_password' %}">Ивази рамз</a></li>
+                <li class="nav-item"><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Ивази рамз</button></li>
+
                 <li><hr class="dropdown-divider"></hr></li>
                 <li class="nav-item"><a class="nav-link dropdown-item ps-3 " href="{% url 'logout'%}">Logout</a></li>
               </ul>
@@ -45,6 +46,7 @@
         </div>
     </nav>
     <div class="container-fluid">{% block content %} {% endblock %}</div>
+    {% include 'users/changepass.html' %}
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
 </html>

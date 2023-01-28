@@ -6,6 +6,7 @@ from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseU
 
 
 class CustomAccountManager(BaseUserManager):
+    use_in_migrations = True
 
     def create_superuser(self, first_name, last_name, email, password, **other_fields):
 
@@ -56,10 +57,10 @@ class Profile(models.Model):
         ('З', 'Зан'),
     )
     user = models.OneToOneField(Account,on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='static/images/user_images', verbose_name='Расм', null=True, blank=True)
+    image = models.ImageField(default='img/user.png', upload_to='static/images/user_images', verbose_name='Расм', null=True, blank=True)
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
-    nationality = models.OneToOneField(Nationality, on_delete=models.CASCADE, null=True, blank=True)
-    education = models.OneToOneField(Education, on_delete=models.CASCADE, null=True, blank=True)
+    nationality = models.ForeignKey(Nationality, on_delete=models.CASCADE, null=True, blank=True)
+    education = models.ForeignKey(Education, on_delete=models.CASCADE, null=True, blank=True)
     phone = models.CharField(max_length=13, null=True, blank=True)
     address = models.CharField(max_length=50, null=True, blank=True)
 

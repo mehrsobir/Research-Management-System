@@ -16,35 +16,36 @@
 <!--    <script src="{% static 'rms/js/bootstrap.min.js' %}"></script>-->
     <title>{% block title %}My WebSite{% endblock %}</title>
   </head>
-  <body class="d-flex flex-column min-vh-100 body_img">
-    <nav class="row bg-light border-bottom">
-        <div class="row col-12 col-md-10">
-          <a class="col-12 col-md-2 text-center text-md-end">
-            <img src="{% static 'img/school.png' %}" class="col-8 col-md-3 w-25 mt-1" alt="Logo">
-          </a>
-          <div class="row col-12 col-md-10">
-            <h5 class="col-12 text-center col-md-10 text-md-start fw-bolder">
-              Иститути омӯзиши масъалаҳои давлатҳои Осиё ва Аврупои АМИТ
-            </h5>
-            <p class="col-12 text-center col-md-10 text-md-start fw-bolder">
-              Равзанаи пажуҳишгар
-            </p>
-          </div>
-        </div>
-        <div class="row col-12 col-md-2">
-            <div class="dropdown col-12 align-self-center text-center m-1">
-              <h5 class="dropdown-toggle" data-bs-toggle="dropdown">
-                {{user.first_name}} {{user.last_name}}
-              </h5>
-              <ul class="dropdown-menu">
-                <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-1" href="{% url 'logout'%}">Profile</a></li>
-                <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-2" href="{% url 'logout'%}">{{user.first_name}}</a></li>
-                <li class="nav-item">
-<!--<buttontype="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal">Ивази рамз</button>-->
-                <button class="btn" hx-get="{% url 'change-password' %}" hx-target="#dialog"> Ивази рамз</button></li>
-                <li><hr class="dropdown-divider"></hr></li>
-                <li class="nav-item"><a class="nav-link dropdown-item ps-3 " href="{% url 'logout'%}">Logout</a></li>
-              </ul>
+  <body>
+    <nav class="container-fluid">
+        <div class="row bg-light border-bottom">
+            <div class="row col-12 col-md-10">
+              <a class="col-12 col-md-2 text-center text-md-end">
+                <img src="{% static 'img/school.png' %}" class="col-8 col-md-3 w-25 mt-1" alt="Logo">
+              </a>
+              <div class="row col-12 col-md-10">
+                <h5 class="col-12 text-center col-md-10 text-md-start fw-bolder">
+                  Иститути омӯзиши масъалаҳои давлатҳои Осиё ва Аврупои АМИТ
+                </h5>
+                <p class="col-12 text-center col-md-10 text-md-start fw-bolder">
+                  Равзанаи пажуҳишгар
+                </p>
+              </div>
+            </div>
+            <div class="row col-12 col-md-2">
+                <div class="dropdown col-12 align-self-center text-center m-1">
+                  <h5 class="dropdown-toggle" data-bs-toggle="dropdown">
+                    {{user.first_name}} {{user.last_name}}
+                  </h5>
+                  <ul class="dropdown-menu">
+                    <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-1" href="{% url 'logout'%}">Profile</a></li>
+                    <li class="nav-item"><a class="nav-link dropdown-item ps-3 pt-2" href="{% url 'logout'%}">{{user.first_name}}</a></li>
+                    <li class="nav-item">
+                    <button class="btn" hx-get="{% url 'change-password' %}" hx-target="#dialog"> Ивази рамз</button></li>
+                    <li><hr class="dropdown-divider"></hr></li>
+                    <li class="nav-item"><a class="nav-link dropdown-item ps-3 " href="{% url 'logout'%}">Logout</a></li>
+                  </ul>
+                </div>
             </div>
         </div>
     </nav>

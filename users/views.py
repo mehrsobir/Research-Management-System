@@ -4,9 +4,9 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib.auth.decorators import login_required, permission_required
 from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.models import Group, Permission
-from .models import Account
+from .models import Account, Profile
 from django.contrib.contenttypes.models import ContentType
-from .forms import PassChangeForm
+from .forms import PassChangeForm, UserUpdateForm, ProfileUpdateForm
 
 # from django.contrib.auth import get_user_model
 # User = get_user_model()
@@ -87,3 +87,23 @@ def change_password(request):
     return render(request, 'users/changepass.html', {
         'form': form,
     })
+
+def update_user_info(request):
+    if request.method == 'POST':
+        u_form = UserUpdateForm(request.POST, instance=request.user)
+        p_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        if u_form.is_valid() and p_form.is_valid():
+            u_form.save()
+            p_form.save()
+            return HttpResponse(status=204)
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        u_form = UserUpdateForm(instance=request.user)
+        p_form = ProfileUpdateForm(instance=request.user.profile)
+    context = {
+        'u_form': u_form,
+        'p_form': p_form
+
+    }
+    return render(request, 'users/profile.html', context)

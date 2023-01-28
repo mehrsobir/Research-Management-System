@@ -35,9 +35,9 @@ class CustomAccountManager(BaseUserManager):
 
 
 class Account(AbstractBaseUser, PermissionsMixin):
-    first_name = models.CharField(max_length=150)
-    last_name = models.CharField(max_length=150)
-    email = models.EmailField(_('email address'), unique=True)
+    first_name = models.CharField(max_length=150, verbose_name='Ном')
+    last_name = models.CharField(max_length=150, verbose_name='Насаб')
+    email = models.EmailField(_('email'), unique=True)
     start_date = models.DateTimeField(default=timezone.now)
     is_staff = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
@@ -57,12 +57,12 @@ class Profile(models.Model):
         ('З', 'Зан'),
     )
     user = models.OneToOneField(Account,on_delete=models.CASCADE)
-    image = models.ImageField(default='img/user.png', upload_to='static/images/user_images', verbose_name='Расм', null=True, blank=True)
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
-    nationality = models.ForeignKey(Nationality, on_delete=models.CASCADE, null=True, blank=True)
-    education = models.ForeignKey(Education, on_delete=models.CASCADE, null=True, blank=True)
-    phone = models.CharField(max_length=13, null=True, blank=True)
-    address = models.CharField(max_length=50, null=True, blank=True)
+    image = models.ImageField(default='img/user.png', upload_to='images/user_images', verbose_name='Расм', null=True, blank=True)
+    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, verbose_name='Ҷинс', null=True, blank=True)
+    nationality = models.ForeignKey(Nationality, on_delete=models.CASCADE, verbose_name='Миллат', null=True, blank=True)
+    education = models.ForeignKey(Education, on_delete=models.CASCADE, verbose_name='Маълумот', null=True, blank=True)
+    phone = models.CharField(max_length=13, verbose_name='Телефон', null=True, blank=True)
+    address = models.CharField(max_length=50, verbose_name='Адрес', null=True, blank=True)
 
     def __str__(self):
         return self.user.__str__()

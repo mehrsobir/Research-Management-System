@@ -22,10 +22,11 @@ class UserAdminConfig(UserAdmin):
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('email', 'last_name', 'first_name', 'password', 'is_active', 'is_staff')}
+            'fields': ('email', 'password1', 'password2', 'last_name', 'first_name', 'is_active', 'is_staff')}
          ),
     )
 
 
 admin.site.register(Account, UserAdminConfig)
+
 admin.site.register(Profile)

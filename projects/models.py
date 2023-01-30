@@ -41,6 +41,7 @@ class Plan(models.Model):
     created_at = models.DateField(auto_now_add=True)
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
     topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
+    print_list = models.DecimalField(max_digits=4, decimal_places=2, default=1)
 
     class Meta:
         verbose_name = 'Нақшаи инфродӣ'
@@ -51,11 +52,12 @@ class Plan(models.Model):
 
 class Subtopic(models.Model):
     name = models.CharField(max_length=255)
+    print_list = models.DecimalField(max_digits=4, decimal_places=2, default=1)
     due_date = models.DateField()
     excepted = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
     status = models.ForeignKey(Status, on_delete=models.CASCADE, default=1)
-    plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
+    plan_id = models.ForeignKey(Plan, on_delete=models.CASCADE)
     article_info = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:

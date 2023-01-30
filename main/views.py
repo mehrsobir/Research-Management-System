@@ -9,3 +9,11 @@ def home(request):
         "is_department": "department" in current_user_groups,
     }
     return render(request, 'main/home.html', context)
+
+@login_required(login_url="login")
+def plan(request):
+    return render(request, 'partials/plan.html')
+
+@login_required(login_url="login")
+def article(request):
+    return render(request, 'partials/article.html')

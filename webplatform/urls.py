@@ -4,6 +4,7 @@ from django.urls import path, include
 from users import views as user_views
 from users.views import change_password, update_user_info
 from institutions.views import institute, department
+from main.views import plan, article
 
 urlpatterns = [
     path('admin/', admin.site.urls),

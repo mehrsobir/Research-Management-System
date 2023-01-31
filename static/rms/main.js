@@ -6,6 +6,7 @@ document.body.addEventListener('htmx:configRequest', (event) => {
 
 const modal = new bootstrap.Modal(document.getElementById("modal"));
 const profmodal = new bootstrap.Modal(document.getElementById("profmodal"));
+const planmodal = new bootstrap.Modal(document.getElementById("planmodal"));
 
 htmx.on("htmx:afterSwap", (e) => {
       // Response targeting #dialog => show the modal
@@ -14,6 +15,9 @@ htmx.on("htmx:afterSwap", (e) => {
       };
       if (e.detail.target.id == "profdialog") {
         profmodal.show()
+      };
+      if (e.detail.target.id == "plandialog") {
+        planmodal.show();
       }
 });
 htmx.on("htmx:beforeSwap", (e) => {
@@ -25,8 +29,12 @@ htmx.on("htmx:beforeSwap", (e) => {
   if (e.detail.target.id == "profdialog" && !e.detail.xhr.response) {
     profmodal.hide()
     e.detail.shouldSwap = false
+  };
+  if (e.detail.target.id == "plandialog" && !e.detail.xhr.response) {
+    planmodal.hide()
+    e.detail.shouldSwap = false
   }
 });
 htmx.on("hidden.bs.modal", () => {
-  document.getElementById("dialog").innerHTML = ""
+  document.getElementsByClassName("modal-dialog").innerHTML = ""
 });

@@ -49,11 +49,11 @@
                     <li class="nav-item">
                       <a class="nav-link link-dark dropdown-item ps-3 pt-2" href="/">Пажуҳишгар</a></li>
                     {% endif %}
-                    {% if is_institute %}
+                    {% if perms.institutions.add_department and not not_main%}
                     <li class="nav-item">
                       <a class="nav-link link-dark dropdown-item ps-3 pt-2" href="/institute">Институт</a></li>
                     {% endif %}
-                    {% if is_department %}
+                    {% if perms.projects.add_project and not not_main %}
                     <li class="nav-item">
                       <a class="nav-link link-dark dropdown-item ps-3 pt-2" href="/department">Шуъба</a></li>
                     {% endif %}

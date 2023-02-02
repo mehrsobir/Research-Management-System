@@ -17,3 +17,7 @@ def plan(request):
 @login_required(login_url="login")
 def article(request):
     return render(request, 'partials/article.html')
+
+@login_required(login_url="login")
+def article_pub(request):
+    return render(request, 'partials/article_pub.html')

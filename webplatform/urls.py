@@ -21,6 +21,8 @@ urlpatterns = [
     #  Department
     path('department/', department, name='department'),
 
+    path('project/', include('projects.urls')),
+
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

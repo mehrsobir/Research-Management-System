@@ -36,12 +36,12 @@ class Topic(models.Model):
 
 
 class Plan(models.Model):
-    year = models.CharField(max_length=4)
+    year = models.CharField(max_length=4, verbose_name='Сол')
     aproved = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
     user = models.ForeignKey(Account, on_delete=models.CASCADE)
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
-    print_list = models.DecimalField(max_digits=4, decimal_places=2, default=1)
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, verbose_name='Мавзуъ')
+    print_list = models.DecimalField(max_digits=4, decimal_places=2, default=1,  verbose_name='Ҷузъи чопӣ')
 
     class Meta:
         verbose_name = 'Нақшаи инфродӣ'

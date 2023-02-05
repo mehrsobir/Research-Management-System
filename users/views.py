@@ -78,15 +78,10 @@ def change_password(request):
         if form.is_valid():
             user = form.save()
             update_session_auth_hash(request, user)  # Important!
-            messages.success(request, 'Your password was successfully updated!')
-            return HttpResponse(status=204)
-        else:
-            messages.error(request, 'Please correct the error below.')
+            return render(request,'partials/success.html')
     else:
         form = PassChangeForm(request.user)
-    return render(request, 'users/changepass.html', {
-        'form': form,
-    })
+    return render(request, 'users/changepass.html', { 'form': form,} )
 
 def update_user_info(request):
     if request.method == 'POST':

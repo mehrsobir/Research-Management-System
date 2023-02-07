@@ -1,6 +1,24 @@
-<div>
+
+<div><h3>Нақшаи соли  {{plan.year}}</h3>
     {{plan.topic}}
     {{plan.print_list}}
     {{plan.aproved}}
     {{plan.year}}
+</div><hr>
+
+<div>
+   <div class="row"> <h3 class="col-3">Зермавзуъҳо</h3>
+    <button type="button" class="col-3 my-2" data-bs-toggle="modal" data-bs-target="#modal"
+            hx-get="{% url 'add-subtopic' plan.id %}" hx-target="#dialog">
+      Иловаи зермавзуъ
+    </button></div>
+    {% for sub in subtopic%}
+    {{sub.name}}
+    {{sub.print_list}}
+    {{subopic.due_date}}
+    {{sub.excepted}}
+    {{sub.status}}
+    <hr>
+    {%endfor%}
+
 </div>

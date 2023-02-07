@@ -1,7 +1,7 @@
 from django.core.exceptions import NON_FIELD_ERRORS
 
 from django import forms
-from .models import Plan
+from .models import Plan, Subtopic
 
 class PlanForm(forms.ModelForm):
     class Meta:
@@ -16,4 +16,9 @@ class PlanForm(forms.ModelForm):
                 'unique_together': " are not unique.",
             },
         }
+
+class SubtopicForm(forms.ModelForm):
+    class Meta:
+        model = Subtopic
+        fields = ['name', 'print_list', 'due_date', 'status']
 

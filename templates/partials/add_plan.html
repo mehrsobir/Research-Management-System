@@ -10,6 +10,7 @@
   <div id = 'form' class="modal-body">
     {% csrf_token %}
     {{ form | crispy }}
+    {{error}}
   </div>
   <div class="modal-footer">
     <button type="button" data-bs-dismiss="modal" class="btn btn-secondary">Cancel</button>

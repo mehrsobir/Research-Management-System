@@ -9,10 +9,14 @@
       <option value="3">2021</option>
     </select>
     </div>
- <button type="button" class="btn btn-primary col-4 my-2" data-bs-toggle="modal" data-bs-target="#modal"
+ <button type="button" class="col-4 my-2" data-bs-toggle="modal" data-bs-target="#modal"
         hx-get="{% url 'add-plan' %}" hx-target="#dialog">
   Иловаи нақшаи инфродӣ
 </button>
+</div>
+
+<div class="bg-success" hx-get="{% url 'get-plan' %}" hx-trigger="load" hx-target="#plan">
+    <div id="plan"></div>
 </div>
 <!-- Modal -->
 <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

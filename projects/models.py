@@ -46,6 +46,8 @@ class Plan(models.Model):
     class Meta:
         verbose_name = 'Нақшаи инфродӣ'
         verbose_name_plural = 'Нақшаҳои инфродӣ'
+        unique_together = ('user', 'year',)
+
 
     def __str__(self):
         return self.user.first_name + ' ' + self.user.last_name + '-' + self.year

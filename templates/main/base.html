@@ -8,9 +8,10 @@
     <link rel="stylesheet" type="text/css" href = "{% static 'bootstrap/css/bootstrap.min.css' %}"/>
     <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'htmx/htmx.min.js' %}"></script>
+
     <title>{% block title %}My WebSite{% endblock %}</title>
   </head>
-  <body>
+  <body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
     <nav class="container-fluid">
         <div class="row bg-light border-bottom">
             <div class="row col-12 col-md-10">
@@ -77,7 +78,7 @@
     </nav>
     <div class="container-fluid">{% block content %} {% endblock %}</div>
     <div id="modal" class="modal fade">
-      <div id="dialog" class="modal-dialog" hx-target="this"></div>
+      <div id="dialog" class="modal-dialog"></div>
     </div>
   </body>
 </html>

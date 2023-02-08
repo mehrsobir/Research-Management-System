@@ -6,19 +6,28 @@
     {{plan.year}}
 </div><hr>
 
-<div>
+<div id = "subtopic">
    <div class="row"> <h3 class="col-3">Зермавзуъҳо</h3>
     <button type="button" class="col-3 my-2" data-bs-toggle="modal" data-bs-target="#modal"
             hx-get="{% url 'add-subtopic' plan.id %}" hx-target="#dialog">
       Иловаи зермавзуъ
-    </button></div>
-    {% for sub in subtopic%}
-    {{sub.name}}
-    {{sub.print_list}}
-    {{subopic.due_date}}
-    {{sub.excepted}}
-    {{sub.status}}
-    <hr>
+    </button>
+   </div>
+
+    {% for subtopic in subtopics%}
+    <div id="st{{subtopic.id}}">
+        {{subtopic.name}}
+        {{subtopic.print_list}}
+        {{subtopic.due_date}}
+        {{subtopic.excepted}}
+        {{subtopic.status}}
+        <button type="button" class="my-2"  hx-get="{% url 'del-subtopic' subtopic.id %}" hx-confirm="Мутмаинед?"
+               hx-target="#st{{subtopic.id}}" hx-swap="outerHTML">Del </button>
+        <button type="button" class="my-2"  data-bs-toggle="modal" data-bs-target="#modal"
+                hx-get="{% url 'update-subtopic' subtopic.id %}"  hx-target="#dialog">
+           Update </button>
+        <hr>
+    </div>
     {%endfor%}
 
 </div>

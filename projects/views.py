@@ -29,24 +29,42 @@ def add_plan(request):
 @login_required(login_url="login")
 def get_plan(request):
     plan = Plan.objects.filter(user=request.user).filter(year=2023).get()
-    subtopic = Subtopic.objects.filter(plan_id=plan)
-    return render(request, 'partials/get_plan.html', { 'plan': plan, 'subtopic': subtopic} )
+    subtopics = Subtopic.objects.filter(plan_id=plan)
+    return render(request, 'partials/get_plan.html', { 'plan': plan, 'subtopics': subtopics} )
 
 @login_required(login_url="login")
 def add_subtopic(request, plan_id):
     if request.method == 'POST':
         form = SubtopicForm(request.POST)
         if form.is_valid():
-            plan = form.save(commit=False)
-            plan.plan_id = Plan.objects.get(id=plan_id)
-            plan.save()
-            return render(request,'partials/success.html')
+            subtopic = form.save(commit=False)
+            subtopic.plan_id = Plan.objects.get(id=plan_id)
+            subtopic.save()
+            return render(request,'partials/get_subtopic.html', {'subtopic': subtopic})
 
     else:
         form = SubtopicForm()
         error = ''
         # form.fields["topic"].queryset = Topic.objects.filter(project = dep_id)
     return render(request, 'partials/add_subtopic.html', { 'form': form, 'error': error} )
+
+@login_required(login_url="login")
+def update_subtopic(request, sub_id):
+    subtop = Subtopic.objects.get(pk=sub_id)
+    form = SubtopicForm(request.POST or None, instance=subtop)
+    if request.method == 'POST':
+        if form.is_valid():
+            subtopic = form.save()
+            return render(request,'partials/get_subtopic.html', {'subtopic': subtopic})
+
+    context = {'form': form, 'sub_id': sub_id}
+    return render(request, 'partials/update_subtopic.html', context)
+
+@login_required(login_url="login")
+def del_subtopic(request, sub_id):
+    sub = Subtopic.objects.get(pk=sub_id)
+    sub.delete()
+    return HttpResponse('')
 
 
 
